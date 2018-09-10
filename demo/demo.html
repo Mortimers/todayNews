@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      div{
+        position: relative;
+        width: 50px;
+        height: 20px;
+        background-color: gray;
+        animation: my 1000ms ease;
+      }
+      @keyframes my {
+        0% {
+          left: 0;
+        }
+        25% {
+          left: 100px;
+        }
+        50% {
+          left: 200px;
+        }
+        75% {
+          left: 300px;
+        }
+        100% {
+          left: 400px;
+        }
+      }
+    </style>
+</head>
+<body>
+<div>123</div>
+<script>
+  /**
+   * 产生一个随机数组
+   * num 产生随机数的个数
+   * scope 随机数的范围
+   * */
+  function randomNum (num, scope = 10) {
+    let arr = [];
+    if (typeof num == Number && typeof scope == Number) {
+      return
+    } else {
+      for (let i = 0; i < num; i ++) {
+        arr.push(Math.random()*scope)
+      }
+      return arr
+    }
+  }
+  /**
+   * 冒泡排序算法
+   *
+   * */
+  function bubbleSort (arr) {
+    if (!(arr instanceof Array)) {
+      return
+    } else {
+      let aLength = arr.length;
+      for (let i = 0; i < aLength; i ++) {
+        for (let j = 0; j < aLength - i - 1; j ++) {
+          if (arr[j] > arr[j + 1]) {
+            let tem = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tem;
+          }
+        }
+      }
+      console.log(arr)
+      return arr
+    }
+  }
+
+  /**
+   * 快速排序
+   * 中心思想：
+   * 去数组中的一个值（一般取数组第一项）作为一个基准，比这项小的放在一个左数组，比它大的放右数组，再利用递归
+   * */
+  function quickSort (arr) {
+    var leftArr = [],
+        rightArr = [],
+        middle = arr[0];
+    if (arr.length <= 1) {
+      return arr
+    }
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < middle) {
+          leftArr.push(arr[i])
+        } else {
+          rightArr.push(arr[i])
+        }
+    }
+    return [].concat(quickSort(leftArr), middle, quickSort(rightArr))
+  }
+
+  /**
+   * 数组去重
+   * */
+  function numDouble (arr) {
+    var obj = {},
+        arrDeal = [];
+    for (let i = 0; i < arr.length; i ++) {
+      if (!obj[arr[i]]) {
+        obj[arr[i]] = 1
+        arrDeal.unshift(arr[i])
+      }
+    }
+    return arrDeal
+  }
+
+  let arr = randomNum(20, 100),
+      arrs = [3,2,6,5,7,8];
+  bubbleSort(arr);
+  numDouble([3,2,6,3,5,8,7,8])
+  console.log(quickSort(arrs))
+
+
+</script>
+
+</body>
+</html>
