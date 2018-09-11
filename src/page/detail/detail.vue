@@ -1,6 +1,6 @@
 <template>
-    <div>
-
+    <div id="detail">
+      {{$route.params.id}}
     </div>
 </template>
 <script>
@@ -8,6 +8,9 @@
  *  作者:Mortimer
  *  功能:
  */
+export default {
+
+}
 </script>
 <style lang="stylus">
 
