@@ -22,6 +22,7 @@ export default {
     mutations: {
         set_indexPage (state, val) {
             state.indexPage = val
+            cache.setSession("index_page", val)
         },
         set_indexId (state, val) {
             state.indexId = val

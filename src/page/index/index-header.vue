@@ -61,14 +61,19 @@ export default {
             // 此处要注意nextTick的概念和用法
             this.$nextTick(function () {
                 let screenWith = document.body.offsetWidth;
+
                 let aActiveDom = document.getElementsByClassName("active"),
                     navDom = document.getElementsByTagName("nav");
                 // 获取dom距父元素的边框的距离
                 let aActiveOffset = aActiveDom[0].offsetLeft;
                 // 获取有滚动元素滚动条
                 let navScrollLeft = navDom[0].scrollLeft;
+                // 当前元素宽度
+                let aActiveWidth = aActiveDom[0].offsetWidth;
+
+                console.log(aActiveOffset, navScrollLeft,aActiveWidth);
                 if ((aActiveOffset - navScrollLeft) > screenWith/2) {
-                    navDom[0].scrollLeft = aActiveOffset - navScrollLeft - screenWith/2
+                    navDom[0].scrollLeft = aActiveOffset - navScrollLeft - (screenWith - aActiveWidth)/2
                 } else {
                     navDom[0].scrollLeft = 0
                 }

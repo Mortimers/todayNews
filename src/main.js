@@ -7,6 +7,10 @@ import store from './store/index'
 import $ from 'jquery'
 import VueLazyload from 'vue-lazyload'  // 引入懒加载插件
 
+// css载入
+import '@/assets/css/reset.css'
+import '@/assets/css/icon.css'
+
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: '',
